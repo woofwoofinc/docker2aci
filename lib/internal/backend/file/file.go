@@ -292,10 +292,10 @@ func getImageID(file *os.File, dockerURL *common.ParsedDockerURL, name string, d
 			imageID = string(app[tag])
 		}
 
-		if clean == "refs/"+tag {
-			refb, err := ioutil.ReadAll(t.TarStream)
+		if clean == "index.json" {
+			indexb, err := ioutil.ReadAll(t.TarStream)
 			if err != nil {
-				return fmt.Errorf("error reading ref descriptor for tag %s: %v", tag, err)
+				return fmt.Errorf("error reading index.json")
 			}
 
 			if dockerURL == nil {
@@ -306,15 +306,22 @@ func getImageID(file *os.File, dockerURL *common.ParsedDockerURL, name string, d
 				}
 			}
 
-			var ref spec.Descriptor
-			if err := json.Unmarshal(refb, &ref); err != nil {
-				return fmt.Errorf("error unmarshaling ref descriptor for tag %s", tag)
+			var index spec.Index
+			if err := json.Unmarshal(indexb, &index); err != nil {
+				return fmt.Errorf("error unmarshaling data from index.json")
 			}
-			imageID, ancestry, err = getDataFromManifest(file, ref.Digest)
-			if err != nil {
-				return err
+
+			// Search the index manifests for one matching the required tag.
+			for _, manifest := range index.Manifests {
+				if manifest.Annotations["org.opencontainers.image.ref.name"] == tag {
+					var digest = fmt.Sprintf("%s", manifest.Digest)
+					imageID, ancestry, err = getDataFromManifest(file, digest)
+					if err != nil {
+						return err
+					}
+					return io.EOF
+				}
 			}
-			return io.EOF
 		}
 		return nil
 	}

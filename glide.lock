@@ -1,5 +1,5 @@
-hash: 3a769560ca4983d15bf63578bb906fc99f0c082696a7fc35f1f2a9e472762210
-updated: 2017-09-15T16:08:56.475302436+02:00
+hash: 66bf1d00c49f0bc0af94eadc9ec5f4f738382a5bb0081e24ebebb859c78c9263
+updated: 2018-01-03T22:56:04.333968312Z
 imports:
 - name: github.com/appc/spec
   version: ba99d6b8ccbbed2942e53eb5395fddae113cdf8e
@@ -28,19 +28,19 @@ imports:
   - digestset
   - reference
 - name: github.com/klauspost/compress
-  version: e3b7981a12dd3cab49afa1d3a50e715846f23732
+  version: ea08389e0dc46025380296f7dd04ab0e8de36adb
   subpackages:
   - flate
 - name: github.com/klauspost/cpuid
-  version: 09cded8978dc9e80714c4d85b0322337b0a1e5e0
+  version: ae832f27941af41db13bd6d8efd2493e3b22415a
 - name: github.com/klauspost/crc32
-  version: 19b0b332c9e4516a6370a0456e6182c3b5036720
+  version: bab58d77464aa9cf4e84200c3276da0831fe0c03
 - name: github.com/klauspost/pgzip
   version: 95e8170c5d4da28db9c64dfc9ec3138ea4466fd4
 - name: github.com/opencontainers/go-digest
   version: 21dfd564fd89c944783d00d069f33e3e7123c448
 - name: github.com/opencontainers/image-spec
-  version: 6e820ec55259e89ccd7092f3131c63e8419a349b
+  version: d60099175f88c47cd379c4738d158884749ed235
   subpackages:
   - specs-go
   - specs-go/v1
@@ -51,9 +51,14 @@ imports:
   subpackages:
   - errorutil
 - name: golang.org/x/crypto
-  version: c10c31b5e94b6f7a0283272dc2bb27163dcea24b
+  version: 0fcca4842a8d74bfddc2c96a073bd2a4d2a7a2e8
   subpackages:
   - ssh/terminal
+- name: golang.org/x/sys
+  version: 28a7276518d399b9634904daad79e18b44d481bc
+  subpackages:
+  - unix
+  - windows
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 testImports: []

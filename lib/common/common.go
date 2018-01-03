@@ -131,7 +131,6 @@ const (
 	MediaTypeDockerV22RootFS       = "application/vnd.docker.image.rootfs.diff.tar.gzip"
 
 	MediaTypeOCIV1Manifest     = spec.MediaTypeImageManifest
-	MediaTypeOCIV1ManifestList = spec.MediaTypeImageManifestList
 	MediaTypeOCIV1Config       = spec.MediaTypeImageConfig
 	MediaTypeOCIV1Layer        = spec.MediaTypeImageLayer
 )
